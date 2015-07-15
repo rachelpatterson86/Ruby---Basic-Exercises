@@ -15,11 +15,12 @@ guess = ""
 
 while guess != answer do
   guess = gets.to_i
-  answer = rand(101)
   if !guess.between?(1,100)
-    puts "#{answer} was the number. Did you follow directions? That is NOT the input needed. Try again"
-  elsif guess != answer #entering again?
-    puts "Guess again! You are no Miss Cleo. #{answer} was the number!"
+    puts "Did you follow directions? That is NOT the input needed. Try again"
+  elsif guess > answer
+    puts "Guess again! You are no Miss Cleo. That number is too high."
+  elsif guess < answer
+    puts "That number is too low. Guess again."
   else
     puts "That's awesome. #{answer} was the number! You are psychic."
   end
