@@ -1,6 +1,6 @@
 # NATO ABC encoder/decoder
 
-# Write your own NATO alphabet. There should be a function to encode and decode. The encode function will take a string replace all upper and lower case characters with their "NATO" equivalents and return the result. The decode function will take a string, replace the "NATO" characters with their normal letter form and return that. Non-alphabetical should be copied/stay the same in both cases.
+# Write your own NATO abc. There should be a function to encode and decode. The encode function will take a string replace all upper and lower case characters with their "NATO" equivalents and return the result. The decode function will take a string, replace the "NATO" characters with their normal letter form and return that. Non-abcical should be copied/stay the same in both cases.
 # Hint 1: You will need a hash table.
 #
 # BONUS!
@@ -9,59 +9,57 @@
 
 require 'pry'
 
-alphabet = {
-  "A"=>"alfa",
-  "B"=>"bravo",
-  "C"=>"charlie",
-  "D"=>"delta",
-  "E"=>"echo",
-  "F"=>"foxtrot",
-  "G"=>"golf",
-  "H"=>"hotel",
-  "I"=>"india",
-  "J"=>"juliett",
-  "K"=>"kilo",
-  "L"=>"lima",
-  "M"=>"mike",
-  "N"=>"november",
-  "O"=>"oscar",
-  "P"=>"papa",
-  "Q"=>"quebec",
-  "R"=>"romeo",
-  "S"=>"sierra",
-  "T"=>"tango",
-  "U"=>"uniform",
-  "V"=>"victor",
-  "W"=>"whiskey",
-  "X"=>"x-ray",
-  "Y"=>"yankee",
-  "Z"=>"zulu"
-}
+nato = [
+  "alfa",
+  "bravo",
+  "charlie",
+  "delta",
+  "echo",
+  "foxtrot",
+  "golf",
+  "hotel",
+  "india",
+  "juliett",
+  "kilo",
+  "lima",
+  "mike",
+  "november",
+  "oscar",
+  "papa",
+  "quebec",
+  "romeo",
+  "sierra",
+  "tango",
+  "uniform",
+  "victor",
+  "whiskey",
+  "x-ray",
+  "yankee",
+  "zulu"
+]
 
-def encoder(msg,alphabet)
-  #msg = 'whatever is in lies'
-  #blech = 'whatever is in alphabet'
+#create a hash table from the abc array...
+
+abc_hash = {}
+def create_abc_hash(hash)
+nato.each do |abc|
+  hash[abc[0]] = abc
+end
+
+def encoder(msg,abc)
   msg.each_char do |c|
-    puts alphabet[c] #does something with c so needs to put c since we want to call each letter...
-#    blech.each {|x,y| puts "#{x}, #{y}"} = no need because the value is already called...
+    puts abc[c]
   end
 end
 
-def decoder(msg,alphabet)
-  #binding.pry
-  msg.split.each do |b| #see ruby doc for strings. what gives me an array of words?
-    puts alphabet.invert[b]
+def decoder(msg,abc)
+  msg.split.each do |b|
+   puts abc.invert[b]
+  end
 end
-end
 
-#encodeMe=encodeMe.chomp == encodeMe.chomp! these are the same.
+puts "Enter message to encode or decode"
+msg = gets.downcase
 
-
-puts "Would you like to send a secret message?"
-lies = gets.upcase
-
-puts "What would you like to decode?"
-truth = gets.downcase
-
-encoder(lies,alphabet)
-decoder(truth, alphabet)
+encoder(msg,abc_hash)
+decoder(msg,abc_hash)
