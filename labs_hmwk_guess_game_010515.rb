@@ -4,9 +4,10 @@
 #user and let them guess again. If the guess is greater than the number, inform
 #the user and let them guess again. If the guess is correct, inform the user.
 
-Hint 1: Use .to_i to convert user input to a number. What is it by default?
+#Hint 1: Use .to_i to convert user input to a number. What is it by default? Answer: string.
 
-Hint 2: Use rand(number) to get a random number between 0 and number
+#Hint 2: Use rand(number) to get a random number between 0 and number
+
 puts "Select any number from 1 to 100!"
 
 answer = rand(101)
