@@ -112,6 +112,7 @@ def permutation(s1,s2)
     end
   else
     puts 'nope'
+  end
 end
 
 #longer but clearer perhaps?
