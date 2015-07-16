@@ -95,15 +95,65 @@ def stars_asc(n)
   end
 end
 
+#Permutation
+#determine if a string is a permutation of another.
+
+s = 'cats'
+s2 = 'astc'
+#nice and clean.
+def permutation(s1,s2)
+  if s1.length == s2.length
+    snew = s1 + s2
+    snew.each_char do |c|
+      if (snew.count c) % 2 != 0
+        false
+        puts 'nope'
+      end
+    end
+  else
+    puts 'nope'
+end
+
+#longer but clearer perhaps?
+def permutation(s1,s2)
+  if s1.length == s2.length
+    n = s1.length
+    perm = true
+    n.times do |i|
+      if s1.chars.sort[i] != s2.chars.sort[i]
+        perm = false
+      end
+      break if !perm
+      print false
+    end
+    if perm == true
+      perm
+    end
+  else
+    print 'nope'
+end
+
+# isSubstring
+# 1.8 Assume you have a method isSubstring which checks if one word is a
+# substring of another. Given two strings, si and s2, write code to check if s2 is
+# a rotation of si using only one call to isSubstring (e.g.,"waterbottle"is a rotation
+# of "erbottlewat").
+#
+
+#function to test if a num is prime
+
+
 #TODO : this looks fun...
 
-# You have 10 pebbles (numbered 1-10). They are by default black. You must alter them by painting them white if they are black or painting them black if they are white. There are 10 rounds. Every round, you must alter the pebbles that are multiples of the current round. The pebbles are by default black.
-# 
+# You have 10 pebbles (numbered 1-10). They are by default black. You must alter
+# them by painting them white if they are black or painting them black if they
+# are white. There are 10 rounds. Every round, you must alter the pebbles that are
+# multiples of the current round. The pebbles are by default black.
+#
 # 1st round, you alter every pebble (paint them all white).
 # 2nd round, you alter every other pebble(you paint pebbles #2,4,6,8,10 black).
 # 3rd round, you alter pebbles #3,6,9.
 # 4th round you alter pebbles #4,8.
-# ...
 # ...
 # 10th round, you alter pebble #10.
 # After the 10th round, which pebbles are painted black and which are painted white?
