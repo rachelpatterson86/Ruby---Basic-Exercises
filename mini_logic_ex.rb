@@ -158,3 +158,21 @@ end
 # ...
 # 10th round, you alter pebble #10.
 # After the 10th round, which pebbles are painted black and which are painted white?
+
+# Sum of multiples
+# If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+#
+# Find the sum of all the multiples of 3 or 5 below 1000.
+
+n=1000
+def sum_3_5(n)
+sum = 0
+num = 0
+  while num < n do
+    if num % 3 == 0 || num % 5 == 0
+      sum += num
+    end
+    num += 1
+  end
+  sum
+end
