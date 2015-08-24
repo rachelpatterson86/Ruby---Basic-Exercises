@@ -23,9 +23,6 @@
 # 10
 # 1 = 1
 
-n=55
-n=10
-
 require 'pry'
 
 #2am coding is not ideal.  This should be refactored.
@@ -47,3 +44,5 @@ def is_happy?(n)
     end
   end
 end
+
+is_happy?(100)
