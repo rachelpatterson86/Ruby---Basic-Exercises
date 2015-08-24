@@ -140,7 +140,18 @@ end
 # a rotation of si using only one call to isSubstring (e.g.,"waterbottle"is a rotation
 # of "erbottlewat").
 #
+s1 = 'waterbottle'
+s2 = 'erbottlewat'
 
+w a t e r b o t t l e
+0 1 2 3 4 5 6 7 8 9 10
+
+e r b o t t l e  w a t
+3 4 5 6 7 8 9 10 0 1 2
+0 1 2 3 4 5 6 7  8 9 10
+def isSubstring(word1,word2)
+
+end
 #function to test if a num is prime
 
 

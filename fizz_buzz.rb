@@ -15,3 +15,5 @@ n=1
     n += 1
   end
 end
+
+fizz_buzz(num)
