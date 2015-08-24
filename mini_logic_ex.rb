@@ -100,6 +100,7 @@ end
 
 s = 'cats'
 s2 = 'astc'
+
 #nice and clean.
 def permutation(s1,s2)
   if s1.length == s2.length
@@ -137,7 +138,7 @@ end
 # isSubstring
 # 1.8 Assume you have a method isSubstring which checks if one word is a
 # substring of another. Given two strings, si and s2, write code to check if s2 is
-# a rotation of si using only one call to isSubstring (e.g.,"waterbottle"is a rotation
+# a rotation of s1 using only one call to isSubstring (e.g.,"waterbottle"is a rotation
 # of "erbottlewat").
 #
 s1 = 'waterbottle'
@@ -154,8 +155,41 @@ def isSubstring(word1,word2)
 end
 #function to test if a num is prime
 
+s3 = 'waterway'
+s4 = 'waywater'
 
-#TODO : this looks fun...
+#check s2 against s1.
+
+#use sort method...
+  # s1 and s2 same length
+  # s1 and s2 have same characters
+
+# find the 0 index letter s2
+
+  def isSubstring?(s1,s2)
+    rotation_check = ''
+    if s1.chars.sort == s2.chars.sort
+        s2.each_char do |j|
+            if s1[0] == j
+            puts "j is " + j + s2.index(j).to_s + " s1[0] is " + s1[0].to_s
+              rotation_check += s2[s2.index(j)...s2.length]
+              puts "rotation_check is " + rotation_check
+              rotation_check += s2[0...s2.index(j)]
+              puts "rotation_check is " + rotation_check
+              if rotation_check == s1
+                true
+              else
+                false
+                rotation_check.clear
+              end
+            end
+            break if rotation_check == s1
+        end
+    else
+       false
+    end
+  end
+
 
 # You have 10 pebbles (numbered 1-10). They are by default black. You must alter
 # them by painting them white if they are black or painting them black if they
@@ -169,6 +203,38 @@ end
 # ...
 # 10th round, you alter pebble #10.
 # After the 10th round, which pebbles are painted black and which are painted white?
+
+@color = [:b,:w]
+limit = 10
+def pebble_color_hash(n)
+  pebble_arr = (1..n).to_a
+  pebble_color = {}
+  pebble_arr.each do |i|
+    pebble_color[pebble_arr[i-1]] = @color[0]
+  end
+  pebble_count(n,pebble_color)
+  pebble_color
+end
+
+
+def pebble_count(n,pebble_hash)
+  t = 1
+  n.times do
+    pebble_hash.each_key do |k|
+      if pebble_hash.keys[k-1] % t == 0
+        if pebble_hash[k] ==  @color[0]
+          pebble_hash[k] =  @color[1]
+        else
+          pebble_hash[k] =  @color[0]
+        end
+      end
+      puts pebble_hash.to_s + t.to_s
+    end
+    t += 1
+  end
+  puts pebble_hash.to_s
+end
+  pebble_color_hash(limit)
 
 # Sum of multiples
 # If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
