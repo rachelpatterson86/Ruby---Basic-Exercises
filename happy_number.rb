@@ -1,6 +1,11 @@
 #HAPPY NUMBERS
-# A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers, while those that do not end in 1 are unhappy numbers (or sad numbers).[1]
-
+# A happy number is a number defined by the following process:
+# Starting with any positive integer, replace the number by the sum of the squares of its digits
+# , and repeat the process until the number equals 1 (where it will stay), or
+# it loops endlessly in a cycle which does not include 1.
+# Those numbers for which this process ends in 1 are happy numbers,
+#  while those that do not end in 1 are unhappy numbers (or sad numbers).[1]
+#
 #sad number walkthrough of logic:
 # 55
 #
@@ -9,40 +14,29 @@
 #
 # 25 + 0 = 25
 # 4+25 = 29
-# 4 + 81 = 85
-# 64 + 25 = 89
-# 64 + 81 = 145
-# 1 + 16 + 25 = 42
-# 16 + 4 =20
-# 4 + 0 = 4
-# 16 = 16
-# 1+36 = 37
-# 9 + 49 = 58
-# 25 + 64 = 89
-#
-# 10
-# 1 = 1
+# etc...
 
-require 'pry'
+#some defined happy numbers
+#1, 7, 10, 13, 19, 23, 28, 31, 32, 44, 49, 68
 
-#2am coding is not ideal.  This should be refactored.
+def happy_numbers(number)
 
-def is_happy?(n)
-  s = n.to_s
-  int = 0
+  return true if number == 1
+  return false if number == 0
   happy = false
-  unless happy
-    l=s.chars.length
-      l.times do |i|
-        digit = s[i].to_i
-        int += digit * digit
-      end
-    if int == 1
-      happy = true
-    else
-      s = int.to_s
+
+  until happy == true
+    potential_happy_number = 0
+    number.to_s.each_char do |num|
+      potential_happy_number += num.to_i**2
     end
+
+    return happy = true if potential_happy_number == 1
+    number = potential_happy_number
   end
 end
 
-is_happy?(100)
+is_happy?(100)  # => true
+is_happy?(7)    # => true
+is_happy?(44)   # => true
+is_happy?(68)   # => true
