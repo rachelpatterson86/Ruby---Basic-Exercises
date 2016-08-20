@@ -1,47 +1,28 @@
-def open_macbeth
-  filename = 'macbeth.txt' #'file_test.txt' ##for testing
-  file = File.open(filename,'r+')
-  remove_special_char(file)
+def get_2nd_most_frequent_word_from_fime(filename)
+  file = File.open(filename, 'r+')
+  long_words_no_special_chars = remove_special_char_and_short_words(file)
+  puts second_most_frequent_word_from_file(long_words_no_special_chars)
 end
-#^ 30 min - a lot of trial and error in figuring out how to get the file integrated with the rest of the code.
 
-#remove all special chars from words within string
-def remove_special_char(line)
-  line_new = ""
-  line.each do |row|
-    line_new += row.gsub(/[!.,?;]/,'') + ' '
+# remove all special chars and words less than 4 characters within string
+def remove_special_char_and_short_words(lines)
+  long_words_no_special_chars = ''
+
+  lines.each do |line|
+    line.gsub(/[^a-zA-Z\s]/, '').split.each do |word|
+      long_words_no_special_chars += (word.downcase + ' ') if word.length > 4
+    end
   end
-  remove_small_words(line_new)
+  long_words_no_special_chars
 end
 
-#^ 10 mins
-
-#remove all text < 4 chars
-def remove_small_words(line)
-line_new4 = ""
-line_arr = line.split
-line_arr.each do |row|
-  if row.length > 4
-    line_new4 += row + ' '
+# get 2nd most frequent word from modified text
+def second_most_frequent_word_from_file(modified_lines)
+  words_and_frequency = Hash.new(0)
+  modified_lines.split.each do |word|
+    words_and_frequency[word] += 1
   end
-end
-second_most_frequent_word(line_new4)
-end
-
-#^12 mins
-
-#get 2nd most frequent word from new text
-# get a count of all the words in the text...
-def second_most_frequent_word(line)
-  line_arr = line.split
-  line_hash = Hash.new(0)
-  line_arr.each do |word|
-    line_hash[word] += 1
-  end
-  ord =line_hash.sort_by { |k,v| v}.reverse
-  puts ord[1]
-  #puts ord.first(3)
+  words_and_frequency.sort_by { |_k, v| v }.reverse[1][0]
 end
 
-#6 mins
-open_macbeth
+get_2nd_most_frequent_word_from_fime('macbeth.txt')
