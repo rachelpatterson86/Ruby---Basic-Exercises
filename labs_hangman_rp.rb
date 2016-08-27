@@ -8,13 +8,7 @@ words = %w(angus onomatopeia mississippi cookies terminal
 
 # guesses = ['x', 'i']
 # comput_word = 'marxist'
-# player_word = '   xi  '
-
-# for each letter in comput_word
-#   if letter is in guesses
-#     print letter
-#   else
-#     print space, underscore or asterisk, but don't show the letter
+# player_word = '___xi__'
 
 def finished?(turns, guesses, answer)
   turns.zero? || complete_word?(guesses, answer)
@@ -37,8 +31,7 @@ def game_over(guesses, answer)
 end
 
 def prompt_player(turns)
-  puts ''
-  puts "What letter would you like to guess? You have #{turns} turns left."
+  puts "\n\nWhat letter would you like to guess? You have #{turns} turns left."
   gets.chomp.downcase
 end
 
@@ -71,4 +64,3 @@ def hangman(words)
 end
 
 hangman(words)
-# prompt_player(turns)

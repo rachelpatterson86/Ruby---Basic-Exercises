@@ -63,25 +63,25 @@ end
 # 4 = ****
 
 def stars_desc(n)
-  i = 0
   return if n.zero?
+  i = 0
   until i == n
     (n - i).times do
       print '*'
     end
-    print '\n'
+    print "\n"
     i += 1
   end
 end
 
 def stars_asc(n)
-  i = n
   return if n.zero?
+  i = n
   until i.zero?
     ((n - i) + 1).times do
       print '*'
     end
-    print '\n'
+    print "\n"
     i -= 1
   end
 end
